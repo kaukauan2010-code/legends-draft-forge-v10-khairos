@@ -127,7 +127,7 @@ function DraftOnline() {
   }, [sala?.id, user?.id]);
 
   // cronômetro: reseta quando muda a seleção sorteada, o nº de escolhas ou o pendente
-  useEffect(() => { setTempo(30); }, [meuDraft?.jogadores_oferecidos, meuDraft?.escolhas?.length, pendente?.nome]);
+  useEffect(() => { setTempo(30); }, [meuDraft?.jogadores_oferecidos, (meuDraft?.escolhas as unknown[] | undefined)?.length, pendente?.nome]);
 
   useEffect(() => {
     if (sala?.status === "torneio") navigate({ to: "/online/$codigo/torneio", params: { codigo } });
@@ -139,7 +139,7 @@ function DraftOnline() {
     if (tempo <= 0) {
       setPendente(null);
       forcarFimDraftOnline({ data: { salaId: sala.id } })
-        .then((novo) => setMeuDraft(novo as SalaDraftRow))
+        .then((novo: unknown) => setMeuDraft(novo as SalaDraftRow))
         .catch((e: Error) => toast.error(e.message));
       toast.warning("Tempo esgotado — escolha automática");
       return;
