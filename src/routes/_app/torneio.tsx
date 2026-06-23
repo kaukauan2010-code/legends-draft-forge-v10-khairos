@@ -410,13 +410,19 @@ function Torneio() {
           <div className="text-[10px] uppercase tracking-widest text-destructive text-center mb-2">Disputa de Pênaltis</div>
           <div className="flex items-center justify-around">
             <div className="text-center flex-1">
-              <div className="text-2xl mb-1">{casa.bandeira}</div>
+              <div className="text-2xl mb-1">{casa.isCPU ? casa.bandeira : "🏆"}</div>
               <div className="font-display text-xs uppercase truncate">{casa.nome}</div>
+              <div className="mt-1 flex items-center justify-center gap-1 text-[9px] uppercase tracking-widest text-muted-foreground">
+                <span className="size-2 rounded-full bg-blue-500" /> Azul
+              </div>
             </div>
             <div className="font-display text-5xl font-black tabular-nums">{placarCasa}–{placarFora}</div>
             <div className="text-center flex-1">
-              <div className="text-2xl mb-1">{fora.bandeira}</div>
+              <div className="text-2xl mb-1">{fora.isCPU ? fora.bandeira : "🏆"}</div>
               <div className="font-display text-xs uppercase truncate">{fora.nome}</div>
+              <div className="mt-1 flex items-center justify-center gap-1 text-[9px] uppercase tracking-widest text-muted-foreground">
+                <span className="size-2 rounded-full bg-red-500" /> Vermelho
+              </div>
             </div>
           </div>
           {cobrancaAtual && (
