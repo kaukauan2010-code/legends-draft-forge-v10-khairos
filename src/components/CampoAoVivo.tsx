@@ -253,7 +253,7 @@ export function CampoAoVivo({ casa, fora, eventoAtual, cobrancaAtual, modo = "pa
             <div
               className={cn(
                 "grid size-5 place-items-center rounded-full border text-[7px] font-black text-white shadow",
-                corRaridade[p.raridade] ?? "bg-slate-600 border-slate-400",
+                p.timeCasa ? COR_CASA : COR_FORA,
                 !p.timeCasa && "opacity-90",
                 destaque === p.id && "ring-2 ring-white scale-150 z-10",
               )}
