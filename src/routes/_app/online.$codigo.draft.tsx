@@ -182,15 +182,6 @@ function DraftOnline() {
       }
     };
 
-    const abandonar = async () => {
-      if (!sala || !user) return;
-      if (!confirm("Abandonar a sala? Você perderá o progresso do draft.")) return;
-      await supabase.from("sala_jogadores").delete().eq("sala_id", sala.id).eq("user_id", user.id);
-      navigate({ to: "/online" });
-    };
-
-    const abandonarLocal = abandonar;
-
     return (
       <div className="mx-auto max-w-md px-4 py-6 space-y-6 animate-enter">
         <header className="flex items-start justify-between gap-2">
